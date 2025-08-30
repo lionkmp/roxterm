@@ -5,6 +5,35 @@ project(roxterm C)
 include(FindPkgConfig)
 include(GNUInstallDirs)
 
+file(GLOB ffs "po/*.po")
+set(TEXTDOMAIN roxterm)
+make_directory(${CMAKE_CURRENT_BINARY_DIR}/locale)
+foreach(ff IN LISTS ffs)
+  get_filename_component(lang ${ff} NAME_WE)
+  make_directory(${CMAKE_CURRENT_BINARY_DIR}/locale/${lang})
+  make_directory(${CMAKE_CURRENT_BINARY_DIR}/locale/${lang}/LC_MESSAGES)
+  add_custom_command(
+    OUTPUT
+      ${CMAKE_CURRENT_BINARY_DIR}/locale/${lang}/LC_MESSAGES/${TEXTDOMAIN}.mo
+    DEPENDS
+      ${ff}
+    COMMAND msgfmt -o
+      ${CMAKE_CURRENT_BINARY_DIR}/locale/${lang}/LC_MESSAGES/${TEXTDOMAIN}.mo
+      ${ff}
+  )
+  add_custom_target(gen_${lang} ALL DEPENDS
+    ${CMAKE_CURRENT_BINARY_DIR}/locale/${lang}/LC_MESSAGES/${TEXTDOMAIN}.mo
+  )
+  add_test(NAME ${lang} COMMAND main)
+  set_property(TEST ${lang} APPEND PROPERTY ENVIRONMENT
+    TEXTDOMAINDIR=${CMAKE_CURRENT_BINARY_DIR}/locale
+    LANGUAGE=${lang}
+  )
+  set_tests_properties(${lang} PROPERTIES
+    PASS_REGULAR_EXPRESSION "${lang} foo"
+  )
+endforeach()
+
 execute_process(COMMAND cat ${PROJECT_SOURCE_DIR}/release_version
     OUTPUT_VARIABLE ROXTERM_VERSION)
 execute_process(COMMAND date "+%Y-%m-%d"
@@ -28,6 +57,9 @@ install(FILES src/icons/roxterm.svg
 
 install(DIRECTORY Config
     DESTINATION ${CMAKE_INSTALL_DATADIR}/roxterm)
+
+install(DIRECTORY build/locale
+    DESTINATION ${CMAKE_INSTALL_DATADIR})
 
 install(DIRECTORY docs/
     DESTINATION ${CMAKE_INSTALL_DOCDIR})
