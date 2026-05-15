@@ -71,7 +71,7 @@ in ROXTerm's GUI.
 ROXTerm has to resort to intercepting read operations on the pty device,
 because VTE doesn't provide support for this OSC. ROXTerm does not intercept
 terminfo/termcap sequences to indicate that it supports OSC 52, so you may need
-to take extra steps to enable it in some apps, for example in neovim:
+to take extra steps to enable it in some apps, for example in neovim (lua):
 
 ```
 if vim.env.SSH_TTY then
@@ -212,6 +212,4 @@ Step 4 uses po4a to perform the following with a single command:
 
 ### Man pages
 
-The man page translations were so incomplete that I have removed them
-altogether. Support for new translations will be provided in the near future,
-also using po4a.
+Man page translations are also handled by po4a, using `--format docbook`.
