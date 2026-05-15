@@ -83,8 +83,8 @@ and docbook-xsl in your Build-Depends control field.
       <arg><option>--colour-scheme=<replaceable>SÉMA</replaceable></option> |
         <option>--color-scheme=<replaceable>SÉMA</replaceable></option> |
         <option>-c <replaceable>SÉMA</replaceable></option></arg>
-      <arg><option>--shortcut-scheme=<replaceable>SÉMA</replaceable></option>
-        | <option>-s <replaceable>SÉMA</replaceable></option></arg>
+      <arg><option>--shortcut-scheme=<replaceable>KÉSZLET</replaceable></option>
+        | <option>-s <replaceable>KÉSZLET</replaceable></option></arg>
       <arg><option>--separate</option></arg>
       <arg><option>--replace</option></arg>
       <arg><option>--fork</option></arg>
@@ -144,7 +144,7 @@ and docbook-xsl in your Build-Depends control field.
     <title>KAPCSOLÓK</title>
     <para>A ROXTerm a szokásos &gnu; parancssori szintaxist követi:
         hosszú kapcsolók két kötőjellel (`--') és
-        rövid, egykötőjeles kapcsolók egyaránt elérhetők.
+        rövid, egy kötőjeles kapcsolók egyaránt elérhetők.
         A következő kapcsolók használhatóak.
     </para>
     <variablelist>
@@ -343,7 +343,7 @@ and docbook-xsl in your Build-Depends control field.
         <term><option>--atexit=<replaceable>MŰVELET</replaceable></option>
         </term>
         <listitem>
-          <para>Mit történjen a lappal a parancs kilépése után.
+          <para>Meghatározza mi történjen a lappal a parancs kilépése után.
           Megadható értékek: close (bezárás), hold (megtartás),
           respawn (újraindítás), ask (rákérdezés).
           </para>
@@ -353,7 +353,7 @@ and docbook-xsl in your Build-Depends control field.
         <term><option>--hold</option>
         </term>
         <listitem>
-          <para>A --atexit=hold rövidítése. A lapot nyitva tartja.
+          <para>Az --atexit=hold rövidítése. A lapot nyitva tartja.
           </para>
         </listitem>
       </varlistentry>
@@ -361,7 +361,7 @@ and docbook-xsl in your Build-Depends control field.
         <term><option>--replace</option>
         </term>
         <listitem>
-          <para>Felváltja az esetleges meglévő példányt ROXTerm D-BUS
+          <para>Felváltja az esetleges meglévő példányt ROXTerm D-Bus
             szolgáltatóként.</para>
         </listitem>
       </varlistentry>
@@ -382,7 +382,7 @@ and docbook-xsl in your Build-Depends control field.
           <option>--session=<replaceable>MUNKAMENET</replaceable></option>
         </term>
         <listitem>
-          <para>A megnevezett felhasználói munkamenet visszaállítása.
+          <para>A megadott felhasználói munkamenet visszaállítása.
           </para>
         </listitem>
       </varlistentry>
@@ -392,7 +392,7 @@ and docbook-xsl in your Build-Depends control field.
         </term>
         <listitem>
           <para>A használandó X szerver kijelző neve. Ha a ROXTermet
-                ugyanazon a rendszeren több különböző kijelzőn használja,
+                ugyanazon a rendszeren több különböző képernyőn használja,
                 akkor a --separate kapcsolót is meg kell adni.
           </para>
         </listitem>
@@ -406,8 +406,8 @@ and docbook-xsl in your Build-Depends control field.
               A parancssor fennmaradó részének végrehajtása a terminálon
               belül. Ennek kell az utolsó kapcsolónak lennie.
               Ha csak egy következő argumentum van, a rendszer értelmezi,
-              hátha szóközzel elválasztott argumentumokat tartalmazó parancsról
-              van szó, amelyet idézőjelben adtak át a ROXTermnek.
+              hogy esetleg szóközzel elválasztott argumentumokat tartalmazó parancsról
+              van-e szó, amelyet idézőjelben adtak át a ROXTermnek.
               Ha egynél több argumentum van, azokat parancsként és
               argumentumokként kezeli értelmezés nélkül.
           </para>
@@ -425,7 +425,7 @@ and docbook-xsl in your Build-Depends control field.
         környezettel együtt kell elindulnia.
         A ROX, GNOME és KDE/Plasma munkamenet-kezelők jelenlegi verziói
         mind elindítják a D-Bus-t.
-        Ha más munkamenetkezelőt, asztalt vagy ablakkezelőt használ,
+        Ha más munkamenet-kezelőt, asztalt vagy ablakkezelőt használ,
         amely nem indítja el a D-Bus-t, akkor külön kell elindítania.
         Illessze be a következő sorokat az
         .xinitrc vagy .xsession fájl elejéhez:
@@ -451,9 +451,9 @@ and docbook-xsl in your Build-Depends control field.
         érdekében, de ez konfigurálható.
     </para>
     <para>
-        Ha a lapfeliratok összezsugorodásával találkozik húzás után
+        Ha a lapfeliratok összezsugorodásával találkozik a húzás után
         (csak "..." fér el bennük), tartsa az egérmutatót a terminál törzsén,
-		amikor elejti a húzott lapot, nem a lapsor területén.
+		amikor elejti a húzott lapot, nem pedig a lapsor területén.
     </para>
   </refsect1>
 
@@ -465,7 +465,7 @@ and docbook-xsl in your Build-Depends control field.
 		az összes funkcióhoz, rejtett menüsor esetén is.
         A menüsor technikailag felesleges, de kezdő felhasználók számára 
         áttekinthetőbbé teszi a ROXTermet.
-        Egy adott ablakra be- és kikapcsolható, vagy tartósan
+        Egy adott ablakra be- és kikapcsolható, akár tartósan is,
         a beállítási alkalmazással.
     </para>
     <para>
@@ -480,8 +480,8 @@ and docbook-xsl in your Build-Depends control field.
         Ha az egérmutató egy olyan cím felett van, amelyet a ROXTerm
         URI-ként ismer fel (általában webcím vagy e-mail cím),
         aláhúzással és a mutató alakjának megváltozásával emeli ki.
-        A cím megnyitásához jobb gombbal kattintva válassza a "Hivatkozás
-		mengitása" menüpontot, vagy tartsa nyomva a Ctrl billentyűt
+        A cím megnyitásához jobb egérgombbal kattintva válassza a "Hivatkozás
+		megnyitása" menüpontot, vagy tartsa lenyomva a Ctrl billentyűt
         és kattintson bal gombbal.
         A címek kezelésére használt alkalmazásokat a beállítási alkalmazással
         lehet megadni, egyébként a rendszer megpróbál megfelelő
@@ -490,7 +490,7 @@ and docbook-xsl in your Build-Depends control field.
     <para>
         A Ctrl billentyű lenyomva tartásával URI-t húzhat egy másik
         alkalmazásba, amely elfogadja URI-ként vagy szövegként.
-        Ha ugyanabba az ablakba húzza vissza, ahonnan jött,
+        Ha ugyanabba az ablakba húzza vissza,
         a cím beillesztésre kerül.
     </para>
     <para>
@@ -562,7 +562,7 @@ and docbook-xsl in your Build-Depends control field.
     <para>
         A Beállítások menü lehetővé teszi az aktuális profil kiválasztását.
         Az aktuális profil vagy színséma szerkesztéséhez, illetve a
-		beállítások kezeléséhez nyissa meg a beállítások alkalmazást.
+		beállítások kezeléséhez nyissa meg a beállítási alkalmazást.
         Ebben kiválaszthatja a négy beállítástípus
         egyikét, és szerkesztheti, másolhatja, törölheti vagy átnevezheti
         azokat. A rádiógombbal kijelölt elem az új terminálok
@@ -675,7 +675,7 @@ and docbook-xsl in your Build-Depends control field.
   <refsect1>
     <title>SPECIÁLIS</title>
     <para>
-        A ROXTerm terminálok alkalmazásokból és szkriptekből D-BUS-on
+        A ROXTerm terminálok alkalmazásokból és szkriptekből D-Bus-on
         keresztül konfigurálhatóak. Erre a célra három metódus áll
         rendelkezésre. Egy adott terminál megcélzása azonosítókóddal
 		lehetséges. Minden ROXTerm azonosítója az abban futó
@@ -703,7 +703,7 @@ and docbook-xsl in your Build-Depends control field.
         használhatnak.
     </para>
     <programlisting>
-        SetShortcutScheme("id", "séma_neve")
+        SetShortcutScheme("id", "készlet_neve")
     </programlisting>
     <para>
         A terminált a megnevezett gyorsbillentyű-készlet használatára kéri.
@@ -722,9 +722,9 @@ and docbook-xsl in your Build-Depends control field.
         D-Bus jelzéseket is küldhet egyedi opciók megváltoztatásához
         egy nevesített profilon vagy színsémán belül a StringOption,
         IntOption (logikai értékekhez is) és FloatOption metódusokkal.
-        A megnevezett profilt vagy színsémát használó összes terminál érintett,
-        de csak ideiglenesen. Az opciók új terminálok számára nem kerülnek
-        mentésre. A metódusok mindegyike 3 argumentumot fogad:
+        A megnevezett profilt vagy színsémát használó összes terminálra
+        érvényesül, de csak ideiglenesen. Az opciók új terminálok számára
+        nem kerülnek mentésre. A metódusok mindegyike 3 argumentumot fogad:
     </para>
     <itemizedlist>
         <listitem>
@@ -777,7 +777,7 @@ and docbook-xsl in your Build-Depends control field.
   <refsect1>
     <title>KÖRNYEZET</title>
     <para>
-        A következő környezeti változókat a ROXTerm beállítja vagy használja:
+        A ROXTerm a következő környezeti változókat állítja be vagy használja:
     </para>
     <variablelist>
       <varlistentry>
