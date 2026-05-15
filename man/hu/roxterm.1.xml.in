@@ -1,0 +1,898 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+
+<!--
+This Hungarian translation is based on the following English version:
+commit 51fbfb8fd99105580b54a58de12dafcb6bc3f549
+Mon May 4 13:30:01 2026 +0100
+
+Process this file with an XSLT processor: 
+
+xsltproc -''-nonet \
+/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl \
+roxterm.1.xml.in
+
+A manual page roxterm.1 will be generated. You
+may view the manual page with: 
+
+nroff -man roxterm.1 | less
+
+The xsltproc binary is found in the xsltproc package.  The
+XSL files are in docbook-xsl.  Please remember that if you
+create the nroff version in one of the debian/rules file
+targets (such as build), you will need to include xsltproc
+and docbook-xsl in your Build-Depends control field.
+-->
+
+  <!ENTITY dhfirstname "<firstname>Tony</firstname>">
+  <!ENTITY dhsurname   "<surname>Houghton</surname>">
+  <!-- Please match date of the English original to be able to keep up-to-date -->
+  <!ENTITY dhdate      "<date>2013. április 1.</date>">
+  <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
+  <!ENTITY dhemail     "<email>h@realh.co.uk</email>">
+  <!ENTITY dhusername  "Tony Houghton">
+  <!ENTITY dhtranslator  "Veres Ferenc">
+  <!ENTITY dhucpackage "<refentrytitle>roxterm</refentrytitle>">
+  <!ENTITY dhpackage   "roxterm">
+  <!ENTITY product     "ROXTerm">
+
+  <!ENTITY debian      "<productname>Debian</productname>">
+  <!ENTITY gnu         "<acronym>GNU</acronym>">
+  <!ENTITY gpl         "&gnu; <acronym>GPL</acronym>">
+]>
+
+<refentry lang="hu">
+  <refentryinfo>
+    <address>
+      &dhemail;
+    </address>
+    <author>
+      <contrib>Fejlesztő</contrib>
+      &dhfirstname; &dhsurname;
+    </author>
+    <copyright>
+      <year>2005-2026</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    &dhdate;
+  </refentryinfo>
+  <refmeta>
+    &dhucpackage;
+    &dhsection;
+    <refmiscinfo class="source">&product;</refmiscinfo>
+    <refmiscinfo class="version">@VERSION@</refmiscinfo>
+    <refmiscinfo class="manual">Felhasználói parancsok</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+    <refpurpose>terminál emulátor</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+      <arg><option>-?</option> | <option>--help</option></arg>
+      <arg><option>--help-all</option></arg>
+      <arg><option>--help-gtk</option></arg>
+      <arg><option>-u</option> | <option>--usage</option></arg>
+      <arg><option>--geometry=<replaceable>GEOM</replaceable></option>
+        | <option>-g <replaceable>GEOM</replaceable></option></arg>
+      <arg><option>--appdir=<replaceable>KÖNYVTÁR</replaceable></option></arg>
+      <arg><option>--profile=<replaceable>PROFIL</replaceable></option> |
+        <option>-p <replaceable>PROFIL</replaceable></option></arg>
+      <arg><option>--colour-scheme=<replaceable>SÉMA</replaceable></option> |
+        <option>--color-scheme=<replaceable>SÉMA</replaceable></option> |
+        <option>-c <replaceable>SÉMA</replaceable></option></arg>
+      <arg><option>--shortcut-scheme=<replaceable>KÉSZLET</replaceable></option>
+        | <option>-s <replaceable>KÉSZLET</replaceable></option></arg>
+      <arg><option>--separate</option></arg>
+      <arg><option>--replace</option></arg>
+      <arg><option>--fork</option></arg>
+      <arg><option>--hold</option></arg>
+      <arg><option>--atexit=<replaceable>MŰVELET</replaceable></option></arg>
+      <arg><option>--directory=<replaceable>KÖNYVTÁR</replaceable></option> |
+        <option>-d <replaceable>KÖNYVTÁR</replaceable></option></arg>
+      <arg><option>--show-menubar</option></arg>
+      <arg><option>--hide-menubar</option></arg>
+      <arg><option>--maximise</option> | <option>-m</option></arg>
+      <arg><option>--fullscreen</option> | <option>-f</option></arg>
+      <arg><option>--borderless</option> | <option>-b</option></arg>
+      <arg><option>--disable-sm</option></arg>
+      <arg><option>--tab</option></arg>
+      <arg><option>--zoom=<replaceable>NAGYÍTÁS</replaceable></option> |
+        <option>-z <replaceable>NAGYÍTÁS</replaceable></option></arg>
+      <arg><option>--title=<replaceable>CÍM</replaceable></option> |
+        <option>-T <replaceable>CÍM</replaceable></option></arg>
+      <arg><option>--tab-name=<replaceable>NÉV</replaceable></option> |
+        <option>-n <replaceable>NÉV</replaceable></option></arg>
+      <arg><option>--role=<replaceable>SZEREP</replaceable></option></arg>
+      <arg><option>--session=<replaceable>MUNKAMENET</replaceable></option></arg>
+      <arg><option>--display=<replaceable>KIJELZŐ</replaceable></option></arg>
+      <arg><option>--execute <replaceable>PARANCS</replaceable></option> |
+        <option>-e <replaceable>PARANCS</replaceable></option></arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1>
+    <title>LEÍRÁS</title>
+    <para>
+        A ROXTerm egy terminál emulátor,
+        a gnome-terminalhoz hasonló funkciókat nyújt.
+        Ugyanazon a VTE könyvtáron alapul,
+        amely egy virtuális terminál emulátort valósít meg.
+    </para>
+    <para>
+        A ROXTerm két alapvető tervezési céllal készült:
+        kis memóriaigény és gyors indulási idő.
+        Ezt a GNOME könyvtárak mellőzésével
+        és a beállítási felület egy különálló
+		kisalkalmazásba helyezésével sikerült is megvalósítani.
+        Azonban az évek során bekerült funkcióknak köszönhetően
+        a ROXTermet ma már akár nehézkesnek is lehet nevezni.
+        Ellenben rendkívül jól konfigurálható.
+        Azokat a haladó felhasználókat célozza meg,
+        akik sokat használnak terminált,
+        és szeretnék finomhangolni a beállításokat.
+    </para>
+    <para>
+        A ROXTerm még mindig támogatja a névadó ROX asztali
+        alkalmazás elrendezést. Hagyományos módon is telepíthető,
+        más asztali környezetekben való használathoz.
+        X11 és Wayland környezetben is működik.
+    </para>
+  </refsect1>
+  <refsect1>
+    <title>KAPCSOLÓK</title>
+    <para>A ROXTerm a szokásos &gnu; parancssori szintaxist követi:
+        hosszú kapcsolók két kötőjellel (`--') és
+        rövid, egy kötőjeles kapcsolók egyaránt elérhetők.
+        A következő kapcsolók használhatóak.
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term><option>-?</option>
+          <option>--help</option>
+        </term>
+        <listitem>
+          <para>A ROXTerm kapcsolóinak megjelenítése.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--help-gtk</option>
+        </term>
+        <listitem>
+          <para>Csak a GTK+ kapcsolóinak megjelenítése.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--help-all</option>
+        </term>
+        <listitem>
+          <para>Az összes kapcsoló megjelenítése.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--usage</option>
+        </term>
+        <listitem>
+          <para>A használat rövid összefoglalójának megjelenítése.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-d <replaceable>KÖNYVTÁR</replaceable></option>
+          <option>--directory=<replaceable>KÖNYVTÁR</replaceable></option>
+        </term>
+        <listitem>
+          <para>A parancsértelmező vagy parancs futtatása a megadott
+            <replaceable>KÖNYVTÁRBAN</replaceable>.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+            <option>-g <replaceable>OSZLOPOKxSOROK+X+Y</replaceable></option>
+            <option>--geometry=<replaceable>OSZLOPOKxSOROK+X+Y</replaceable>
+            </option>
+        </term>
+        <listitem>
+            <para>
+                Az <replaceable>OSZLOPOKxSOROK</replaceable> a terminálablak
+                méretét adja meg karakterekben.
+                A <replaceable>+X+Y</replaceable> opcionális, és az ablak bal
+                felső sarkának eltolását adja meg képernyőn, DPI-korrigált
+				pixelekben. A <quote>+</quote> helyett
+                <quote>-</quote> is használható a jobb és/vagy alsó szélre
+                utalva. Az eltolások elavultak, és általában csak X11-ben
+                működnek.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--appdir=<replaceable>KÖNYVTÁR</replaceable></option>
+        </term>
+        <listitem>
+          <para>Az alkalmazás könyvtára ROX alkalmazásként futtatva.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--show-menubar</option>
+          <option>--hide-menubar</option>
+        </term>
+        <listitem>
+          <para>A menüsor megjelenítése vagy elrejtése, felülírva a profil
+            beállítását. Alapértelmezés szerint megjelenik.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--maximise</option>
+          <option>-m</option>
+        </term>
+        <listitem>
+          <para>A terminálablak teljes képernyőre maximalizálása,
+            megtartva az ablakkeretet.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--fullscreen</option>
+          <option>-f</option>
+        </term>
+        <listitem>
+          <para>A terminálablak teljes képernyőre méretezése,
+            az ablakkeret nélkül.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--borderless</option>
+          <option>-b</option>
+        </term>
+        <listitem>
+          <para>Az ablakkeret letiltása (pl. címsor, átméretező
+            gombok, szegély), ha az ablakkezelő támogatja.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--tab</option>
+        </term>
+        <listitem>
+          <para>Ha lehetséges, az új terminál lap megnyitása egy meglévő ablakban
+          új ablak helyett. A <option>-T</option>/<option>--title</option>
+          kapcsolóval együtt használva a lapot egy azonos cím-sablonú meglévő
+          ablakba helyezi, ha van ilyen. Ez a kapcsoló felülírja a
+          <option>--zoom</option> és a <option>--fullscreen</option>
+          kapcsolókat.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--zoom=<replaceable>NAGYÍTÁS</replaceable></option>
+          <option>-z <replaceable>NAGYÍTÁS</replaceable></option>
+        </term>
+        <listitem>
+          <para>A terminál betűméretének skálázása NAGYÍTÁS szorzóval
+            (1.0 a normál méret).</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-p <replaceable>PROFIL</replaceable></option>
+          <option>--profile=<replaceable>PROFIL</replaceable></option>
+        </term>
+        <listitem>
+          <para>A megadott profil használata.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-c <replaceable>SÉMA</replaceable></option>
+          <option>--colour-scheme=<replaceable>SÉMA</replaceable></option>
+          <option>--color-scheme=<replaceable>SÉMA</replaceable></option>
+        </term>
+        <listitem>
+          <para>A megadott színséma használata.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-s <replaceable>KÉSZLET</replaceable></option>
+          <option>--shortcut-scheme=<replaceable>KÉSZLET</replaceable></option>
+        </term>
+        <listitem>
+          <para>A megnevezett gyorsbillentyű-készlet használata.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--title=<replaceable>CÍM</replaceable></option>
+          <option>-T <replaceable>CÍM</replaceable></option>
+        </term>
+        <listitem>
+          <para>Az ablak cím-sablonjának beállítása. Tartalmazhatja a
+          "%s" karaktersorozatot, amelyet a lap feliratának teljes
+          tartalma helyettesít, a "%n" karaktersorozatot, amelyet a
+          lapok száma helyettesít, és a "%t" karaktersorozatot,
+          amelyet az aktuális lap sorszáma helyettesít.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--tab-name=<replaceable>NÉV</replaceable></option>
+          <option>-n <replaceable>NÉV</replaceable></option>
+        </term>
+        <listitem>
+          <para>A lapon megjelenő lapnév beállítása. Tartalmazhatja a
+          "%s" karaktersorozatot, amelyet a terminál által beállított
+          ablakcím helyettesít, a "%n" karaktersorozatot, amelyet a
+          lapok száma helyettesít, és a "%t" karaktersorozatot,
+          amelyet az aktuális lap sorszáma helyettesít.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--separate</option>
+        </term>
+        <listitem>
+          <para>Különálló folyamat használata ehhez a terminálhoz.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--fork</option>
+        </term>
+        <listitem>
+          <para>Mindig a háttérbe ágazik. Rendszerint az első példány az
+          előtérben marad, és a következő hívások visszatérnek, miután kérték
+          a fő példányt a parancsuk kezelésére. Ez a beállítás arra készteti
+          a fő példányt, hogy háttérbe ágazzon; az előtér-folyamat visszatér,
+          amint a fő példány készen áll a további parancsok kezelésére.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--atexit=<replaceable>MŰVELET</replaceable></option>
+        </term>
+        <listitem>
+          <para>Meghatározza mi történjen a lappal a parancs kilépése után.
+          Megadható értékek: close (bezárás), hold (megtartás),
+          respawn (újraindítás), ask (rákérdezés).
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--hold</option>
+        </term>
+        <listitem>
+          <para>Az --atexit=hold rövidítése. A lapot nyitva tartja.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--replace</option>
+        </term>
+        <listitem>
+          <para>Felváltja az esetleges meglévő példányt ROXTerm D-Bus
+            szolgáltatóként.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>--role=<replaceable>SZEREP</replaceable></option>
+        </term>
+        <listitem>
+          <para>A WM_WINDOW_ROLE tulajdonság beállítása az ablakban.
+              Ezzel egyedileg azonosítható egy ablak munkamenetek között,
+              vagy az ablakkezelők konfigurációs erőforrásainak
+              kiválasztásában használható.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>--session=<replaceable>MUNKAMENET</replaceable></option>
+        </term>
+        <listitem>
+          <para>A megadott felhasználói munkamenet visszaállítása.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>
+          <option>--display=<replaceable>KIJELZŐ</replaceable></option>
+        </term>
+        <listitem>
+          <para>A használandó X szerver kijelző neve. Ha a ROXTermet
+                ugyanazon a rendszeren több különböző képernyőn használja,
+                akkor a --separate kapcsolót is meg kell adni.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>-e</option>
+          <option>--execute</option>
+        </term>
+        <listitem>
+          <para>
+              A parancssor fennmaradó részének végrehajtása a terminálon
+              belül. Ennek kell az utolsó kapcsolónak lennie.
+              Ha csak egy következő argumentum van, a rendszer értelmezi,
+              hogy esetleg szóközzel elválasztott argumentumokat tartalmazó parancsról
+              van-e szó, amelyet idézőjelben adtak át a ROXTermnek.
+              Ha egynél több argumentum van, azokat parancsként és
+              argumentumokként kezeli értelmezés nélkül.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+  <refsect1>
+    <title>ELŐKÉSZÍTÉS</title>
+    <para>
+        A D-Bus egy üzenetküldő rendszer, amelyet a ROXTerm a terminálok
+        és a beállítási alkalmazás összekötésére használ.
+        A ROXTerm a "session" buszt használja, amelynek az asztali
+        környezettel együtt kell elindulnia.
+        A ROX, GNOME és KDE/Plasma munkamenet-kezelők jelenlegi verziói
+        mind elindítják a D-Bus-t.
+        Ha más munkamenet-kezelőt, asztalt vagy ablakkezelőt használ,
+        amely nem indítja el a D-Bus-t, akkor külön kell elindítania.
+        Illessze be a következő sorokat az
+        .xinitrc vagy .xsession fájl elejéhez:
+    </para>
+    <programlisting>
+        if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+            eval `dbus-launch --sh-syntax --exit-with-session`
+            export DBUS_SESSION_BUS_ADDRESS
+        fi
+    </programlisting>
+    <para>
+        Ez a beállítás módot ad tetszőleges számú profil leképezésére
+        konfigurációs fájlnevekre.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>LAPOK</title>
+    <para>
+        Minden ablak több lapot tartalmazhat, mindegyik saját terminállal.
+        A lapsor alapértelmezés szerint mindig látható, még akkor is,
+        ha csak egy lap van, az átméretezési következetlenségek elkerülése
+        érdekében, de ez konfigurálható.
+    </para>
+    <para>
+        Ha a lapfeliratok összezsugorodásával találkozik a húzás után
+        (csak "..." fér el bennük), tartsa az egérmutatót a terminál törzsén,
+		amikor elejti a húzott lapot, nem pedig a lapsor területén.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>MENÜK</title>
+    <para>
+        Ha a menüsor el van rejtve, a helyi menü (a terminálon) ugyanazokat az
+		elemeket tartalmazza, mint a menüsor. Ez teljes hozzáférést biztosít
+		az összes funkcióhoz, rejtett menüsor esetén is.
+        A menüsor technikailag felesleges, de kezdő felhasználók számára 
+        áttekinthetőbbé teszi a ROXTermet.
+        Egy adott ablakra be- és kikapcsolható, akár tartósan is,
+        a beállítási alkalmazással.
+    </para>
+    <para>
+        A helyi menü lehetővé teszi e-mail és webcímek megnyitását külső
+        alkalmazásokban, ha az egérmutató egy ilyen cím felett van.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>URI KIEMELÉS</title>
+    <para>
+        Ha az egérmutató egy olyan cím felett van, amelyet a ROXTerm
+        URI-ként ismer fel (általában webcím vagy e-mail cím),
+        aláhúzással és a mutató alakjának megváltozásával emeli ki.
+        A cím megnyitásához jobb egérgombbal kattintva válassza a "Hivatkozás
+		megnyitása" menüpontot, vagy tartsa lenyomva a Ctrl billentyűt
+        és kattintson bal gombbal.
+        A címek kezelésére használt alkalmazásokat a beállítási alkalmazással
+        lehet megadni, egyébként a rendszer megpróbál megfelelő
+        alapértelmezett alkalmazást keresni.
+    </para>
+    <para>
+        A Ctrl billentyű lenyomva tartásával URI-t húzhat egy másik
+        alkalmazásba, amely elfogadja URI-ként vagy szövegként.
+        Ha ugyanabba az ablakba húzza vissza,
+        a cím beillesztésre kerül.
+    </para>
+    <para>
+        Ha az egérmutató egy URL kiszolgálócím-részlete felett van,
+        csak a cím kerül kiemelésre, a fájlnév nem.
+        A fájlnév fölé mozgatva az egérmutatót megkapja a teljes URL-t.
+        Hasonlóképpen e-mail cím is kiemelhető a vezető "mailto:"
+        előtaggal vagy anélkül.
+    </para>
+    <para>
+        SSH URI és gépnév-egyeztetés is támogatott.
+        Az elérési utat tartalmazó URI-k csak a vágólapra másolhatók.
+        Elérési út nélkül a ROXTerm SSH kapcsolatot is indíthat
+        a megadott géphez.
+        Egyszerű gépnevek is egyeztethetők, de csak akkor,
+        ha "ssh"-val kezdődnek,
+        vagy ".local" vagy ".lan" végződésük van.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>HÚZÁS ÉS EJTÉS</title>
+    <para>
+        Elemeket húzhat a terminálablakokra.
+        A szöveges objektumok úgy kerülnek a terminálba,
+        mintha begépelték volna.
+        Fájlok és URI-k esetén a tartalom helyett azok helye kerül be.
+        Képfájlokat a beállítási alkalmazás megfelelő területére húzva
+        terminál háttérképeket is beállíthat.
+        Ha a Ctrl billentyűt lenyomva tartva egy kiemelt URI-t húz el,
+        a cím egy másik alkalmazásba ejthető.
+    </para>
+    <para>
+        A lapokat felirataiknál fogva húzhatja átrendezésükhöz egy ablakban,
+        áthelyezésükhöz egy másik ROXTerm ablakba, vagy egy ROXTerm ablakon
+        kívülre ejtve saját új ablakukba mozgathatja.
+        A jobb egérgombbal egy nem kiválasztott lapot tud mozgatni
+        anélkül, hogy kijelölné.
+        A középső gombbal a vágólap tartalmát illeszti be a lap neveként.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>MUNKAMENETEK</title>
+    <para>
+        A felhasználói munkamenetek névvel menthetők.
+        Kattintson a Munkamenet mentése... elemre a Fájl menüben.
+        A munkamenet megőrzi az ablakok és lapok aktuális állapotát,
+        de szöveges tartalmát nem.
+        A munkamenet a --session kapcsolóval állítható vissza.
+        Ha a neve "Default", alapértelmezés szerint visszaáll.
+        A név mező üresen hagyása egyenértékű a "Default" névvel.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>BEÁLLÍTÁSOK</title>
+    <para>
+        A beállítások kezelése nevesített profilokon alapul,
+        így különböző beállításkészleteket menthet
+        és gyorsan válthat köztük.
+        Vannak profilok általános beállításokhoz,
+        színsémákhoz és gyorsbillentyű-kombinációkhoz.
+        A színsémák és profilok egyszerre egy lapra vonatkoznak,
+        de a gyorsbillentyűk egy ablak összes lapjára érvényesek.
+        Az új ablakok és lapok az őket megnyitó ablak vagy lap
+		beállításait öröklik.
+    </para>
+    <para>
+        A Beállítások menü lehetővé teszi az aktuális profil kiválasztását.
+        Az aktuális profil vagy színséma szerkesztéséhez, illetve a
+		beállítások kezeléséhez nyissa meg a beállítási alkalmazást.
+        Ebben kiválaszthatja a négy beállítástípus
+        egyikét, és szerkesztheti, másolhatja, törölheti vagy átnevezheti
+        azokat. A rádiógombbal kijelölt elem az új terminálok
+        alapértelmezése lesz.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>GYORSBILLENTYŰK</title>
+    <para>
+    A ROXTerm lehetővé teszi a gyorsbillentyű-készletek szerkesztését
+    szövegszerkesztőben, akár a beállítási alkalmazáson keresztül,
+    akár a terminál menüjéből (Beállítások almenü).
+    A műveletek nevei a menüelemekben használt angol nyelvű feliratoknak felelnek meg.
+    Az új billentyűkombinációk automatikusan újratöltődnek
+    a fájl mentésekor. Szükség esetén egy séma kiválasztása a Beállítások
+    menüben kényszeríti az újratöltést.
+    Az alapértelmezett gyorsbillentyű beállítási fájl:
+    </para>
+    <programlisting>
+        ~/.config/roxterm.sourceforge.net/Shortcuts/Default.
+    </programlisting>
+    <para>
+    Az alapértelmezett gyorsbillentyűk:
+    </para>
+    <programlisting>
+        Ctrl+Shift+N    Új ablak
+        Ctrl+Shift+T    Új lap
+        Ctrl+Shift+Q    Ablak bezárása
+        Ctrl+Shift+W    Lap bezárása
+        Ctrl+PageUp     Előző lap
+        Ctrl+PageDown   Következő lap
+        Ctrl+Shift+A    Összes kijelölése
+        Ctrl+Shift+C    Másolás
+        Ctrl+Shift+V    Beillesztés
+        Ctrl+Shift+M    Menüsor megjelenítése
+        Ctrl+plusz      Nagyítás
+        Ctrl+minusz     Kicsinyítés
+        Ctrl+0          Normál méret
+        F11             Teljes képernyő
+        Ctrl+Shift+B    Keret nélküli mód
+        Shift+Up        Görgetés felfelé egy sorral
+        Shift+Down      Görgetés lefelé egy sorral
+        F1              Kézikönyv megjelenítése
+        Ctrl+Shift+Y    Másolás és beillesztés
+        Ctrl+Shift+F    Keresés...
+        Ctrl+Shift+I    Következő találat
+        Ctrl+Shift+P    Előző találat
+    </programlisting>
+    <para>
+        Emellett a lapok kiválaszthatók az
+        <keycombo action='simul'>
+            <keycap>Alt</keycap>
+            <keycap>1</keycap>
+        </keycombo>
+        billentyűkombinációval,
+        ahol az 1 a lap sorszámával helyettesítendő.
+        Ez a profil beállításaiban letiltható.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>BEÁLLÍTÁSKEZELŐ</title>
+    <para>
+        A beállítási alkalmazás elindításához válassza a
+        "Beállítások..." menüpontot a ROXTerm menüjében,
+        vagy futtassa a <command>roxterm-config</command> parancsot.
+    </para>
+    <para>
+        A beállítási fájlok más felhasználókkal is megoszthatók.
+        Minden profil, színséma és gyorsbillentyű-készlet egyetlen fájlból
+        áll. Egy fájl a megfelelő könyvtárba mentésével a fájlnévvel azonos
+        nevű profil jön létre.
+    </para>
+    <para>
+        A fájlok helyei az XDG alapkönyvtár specifikációját követik.
+    </para>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>
+            &#x0024;{XDG_CONFIG_HOME}/roxterm.sourceforge.net,
+            alapértelmezés szerint ~/.config/roxterm.sourceforge.net.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          &#x0024;{XDG_CONFIG_DIRS}/roxtem.sourceforge.net,
+          alapértelmezés szerint /etc/xdg/roxtem.sourceforge.net.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+            ROXTerm/Config ROX felhasználók számára,
+            vagy &#x0024;{datadir}/roxterm/Config másoknak.
+            A &#x0024;{datadir} rendszerint /usr/share csomagok esetén,
+            vagy /usr/local/share forráskódból való fordításkor.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+        Ezeken a helyeken belül a profilok a "Profiles" alkönyvtárba,
+        a színsémák a "Colours" alkönyvtárba,
+        a gyorsbillentyű-készletek a "Shortcuts" alkönyvtárba
+        kerülnek. A "Global" nevű fájl vegyes beállításokat tartalmaz,
+        amelyek nem tartoznak a fenti kategóriákba, beleértve az új terminálok
+        alapértelmezett profilját.
+    </para>
+  </refsect1>
+
+  <refsect1>
+    <title>SPECIÁLIS</title>
+    <para>
+        A ROXTerm terminálok alkalmazásokból és szkriptekből D-Bus-on
+        keresztül konfigurálhatóak. Erre a célra három metódus áll
+        rendelkezésre. Egy adott terminál megcélzása azonosítókóddal
+		lehetséges. Minden ROXTerm azonosítója az abban futó
+        parancsértelmezőből vagy alkalmazásból a ROXTERM_ID környezeti
+        változóból olvasható ki.
+        A D-Bus objektum elérési útja "net.sf.roxterm.Options",
+        a D-Bus interfész "/net/sf/roxterm/Options".
+        A metódusok:
+    </para>
+    <programlisting>
+        SetProfile("id", "profil_neve")
+    </programlisting>
+    <para>
+        A terminált a megnevezett profil használatára kéri.
+        Megjegyzés: az ugyanabban az ablakban lévő többi lap is frissítésre
+		kerül az új profilra. Egy ablak összes lapjának azonos profilt kell
+        használnia, hogy a betűméret és a terminálméret egységes maradjon.
+    </para>
+    <programlisting>
+        SetColourScheme("id", "séma_neve")
+    </programlisting>
+    <para>
+        A terminált a megnevezett színséma használatára kéri.
+        Az egy ablakban található lapok különböző színsémákat is
+        használhatnak.
+    </para>
+    <programlisting>
+        SetShortcutScheme("id", "készlet_neve")
+    </programlisting>
+    <para>
+        A terminált a megnevezett gyorsbillentyű-készlet használatára kéri.
+        Az egy ablakban található lapoknak azonos
+        gyorsbillentyű-készletet kell használniuk.
+    </para>
+    <para>
+        Példa dbus-send használatára parancsfájlban:
+    </para>
+    <programlisting>
+      dbus-send --session /net/sf/roxterm/Options \
+           net.sf.roxterm.Options.SetColourScheme \
+           string:$ROXTERM_ID string:GTK
+    </programlisting>
+    <para>
+        D-Bus jelzéseket is küldhet egyedi opciók megváltoztatásához
+        egy nevesített profilon vagy színsémán belül a StringOption,
+        IntOption (logikai értékekhez is) és FloatOption metódusokkal.
+        A megnevezett profilt vagy színsémát használó összes terminálra
+        érvényesül, de csak ideiglenesen. Az opciók új terminálok számára
+        nem kerülnek mentésre. A metódusok mindegyike 3 argumentumot fogad:
+    </para>
+    <itemizedlist>
+        <listitem>
+            <para>
+                Teljes profilnév, beleértve a "Profiles/" vagy
+                "Colours/" előtagot
+            </para>
+        </listitem>
+        <listitem>
+            <para>
+                Opció neve
+            </para>
+        </listitem>
+        <listitem>
+            <para>
+                Érték
+            </para>
+        </listitem>
+    </itemizedlist>
+    <para>
+        Az elérhető opciók neveit a beállítási fájlokban ellenőrizheti,
+        amelyekből a típusok is kiolvashatók.
+        Példa dbus-send használatára parancsfájlban:
+    </para>
+    <programlisting>
+        dbus-send --session /net/sf/roxterm/Options \
+            net.sf.roxterm.Options.StringOption \
+            string:Colours/GTK string:background 'string:#ffffff'
+    </programlisting>
+    <para>
+        Egy harmadik lehetséges felhasználás az, hogy értesítjük a ROXTermet,
+        hogy egy profilt, színsémát vagy gyorsbillentyű-készletet egy külső
+        program módosított, és az azt használó összes terminálnak újra kell
+        töltenie:
+    </para>
+    <programlisting>
+        OptionsChanged("csoport_neve", "profil_neve")
+    </programlisting>
+    <para>
+        ahol csoport_neve értéke "Profiles", "Colours"
+        vagy "Shortcuts" lehet. Például:
+    </para>
+    <programlisting>
+        dbus-send --session /net/sf/roxterm/Options \
+            net.sf.roxterm.Options.OptionsChanged \
+            string:Profiles string:Default
+    </programlisting>
+  </refsect1>
+
+  <refsect1>
+    <title>KÖRNYEZET</title>
+    <para>
+        A ROXTerm a következő környezeti változókat állítja be vagy használja:
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>COLORTERM</term>
+        <listitem>
+            <para>A VTE "truecolor"-ra állítja, ha az ablak
+                16 millió színt támogat.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>EDITOR</term>
+        <listitem>
+            <para>A szövegszerkesztő neve.
+                Alapértelmezés szerint "gedit", "kate",
+                "gvim", "emacs", amelyik először szerepel
+                a PATH változóban megadott útvonalakon.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>LANG</term>
+        <listitem>
+            <para>
+                A súgó URI nyelve. Alapértelmezett értéke "en".
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>ROXTERM_ID</term>
+        <listitem>
+            <para>
+                A roxterm D-Bus példány egyedi azonosítója.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>ROXTERM_NUM</term>
+        <listitem>
+            <para>
+                Az aktuális roxterm folyamat által kezelt felső szintű ablakok
+                száma.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>ROXTERM_PID</term>
+        <listitem>
+            <para>
+                A roxterm folyamatazonosítója.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>TERM</term>
+        <listitem>
+            <para>
+                A terminfo leírás neve, amely xterm-256color.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>VTE_VERSION</term>
+        <listitem>
+            <para>A VTE könyvtár verziószáma.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>WINDOWID</term>
+        <listitem>
+            <para>
+                A felső szintű roxterm ablak decimális X Window azonosítója.
+                Csak X11 környezetben támogatott.
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>XDG_CONFIG_HOME</term>
+        <listitem>
+            <para>
+                A roxterm munkamenetek mentési helye.
+                Alapértelmezés: ~/.config.
+                A munkamenetek a
+                $XDG_CONFIG_HOME/roxterm.sourceforge.net/UserSessions/
+                alatt kerülnek mentésre.
+            </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+  <refsect1>
+    <title>LÁSD MÉG</title>
+    <para>
+    <filename>file://@CMAKE_INSTALL_FULL_DOCDIR@/en/index.html</filename>
+    </para>
+    <!-- para>vagy</para>
+    <para>
+    <filename>file://@CMAKE_INSTALL_FULL_DOCDIR@/hu/index.html</filename>
+    </para -->
+  </refsect1>
+
+  <refsect1>
+    <title>SZERZŐ</title>
+    <para>Ezt a kézikönyvlapot &dhusername; &dhemail; írta.
+      A magyar fordítást &dhtranslator; készítette.
+      Engedélyezett a dokumentum másolása, terjesztése és/vagy módosítása
+      a Free Software Foundation által kiadott &gnu; General Public License
+      2. vagy bármely újabb verziójának feltételei szerint.
+    </para>
+    <para>
+      Debian alapú rendszereken a GNU General Public Licenc teljes szövege
+      megtalálható a /usr/share/common-licenses/GPL fájlban.
+    </para>
+  </refsect1>
+
+</refentry>

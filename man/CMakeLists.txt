@@ -4,7 +4,7 @@ if (NOT "${XSLTPROC}" EQUAL "XSLTPROC-NOTFOUND")
         http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl)
 
     set(ALL_MANPAGES)
-    set(LANGS "." pt_BR)
+    set(LANGS "." pt_BR hu)
     set(MAN_NAMES roxterm roxterm-config)
 
     foreach(LANG ${LANGS})

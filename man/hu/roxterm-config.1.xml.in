@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+
+<!--
+This Hungarian translation is based on the following English version:
+commit 51fbfb8fd99105580b54a58de12dafcb6bc3f549
+Mon May 4 13:30:01 2026 +0100
+
+Process this file with an XSLT processor: 
+
+xsltproc -''-nonet \
+/usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl \
+roxterm-config.1.xml.in
+
+A manual page roxterm.1 will be generated. You
+may view the manual page with: 
+
+nroff -man roxterm-config.1 | less
+
+The xsltproc binary is found in the xsltproc package.  The
+XSL files are in docbook-xsl.  Please remember that if you
+create the nroff version in one of the debian/rules file
+targets (such as build), you will need to include xsltproc
+and docbook-xsl in your Build-Depends control field.
+-->
+
+
+  <!ENTITY dhfirstname "<firstname>Tony</firstname>">
+  <!ENTITY dhsurname   "<surname>Houghton</surname>">
+  <!ENTITY dhdate      "<date>2011. november 19.</date>">
+  <!ENTITY dhsection   "<manvolnum>1</manvolnum>">
+  <!ENTITY dhemail     "<email>h@realh.co.uk</email>">
+  <!ENTITY dhusername  "Tony Houghton">
+  <!ENTITY dhtranslator  "Veres Ferenc">
+  <!ENTITY dhucpackage "<refentrytitle>roxterm</refentrytitle>">
+  <!ENTITY dhpackage   "roxterm-config">
+  <!ENTITY product     "ROXTerm">
+
+  <!ENTITY debian      "<productname>Debian</productname>">
+  <!ENTITY gnu         "<acronym>GNU</acronym>">
+  <!ENTITY gpl         "&gnu; <acronym>GPL</acronym>">
+]>
+
+<refentry lang="hu">
+  <refentryinfo>
+    <address>
+      &dhemail;
+    </address>
+    <author>
+      <contrib>Fejlesztő</contrib>
+      &dhfirstname; &dhsurname;
+    </author>
+    <copyright>
+      <year>2005-2026</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    &dhdate;
+  </refentryinfo>
+  <refmeta>
+    &dhucpackage;
+    &dhsection;
+    <refmiscinfo class="source">&product;</refmiscinfo>
+    <refmiscinfo class="version">@VERSION@</refmiscinfo>
+    <refmiscinfo class="manual">Felhasználói parancsok</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+    <refpurpose>terminál emulátor</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+      <arg><option>--appdir=<replaceable>KÖNYVTÁR</replaceable></option></arg>
+      <arg><option>--EditProfile=<replaceable>PROFIL</replaceable></option></arg>
+      <arg><option>--EditColourScheme=<replaceable>SÉMA</replaceable></option></arg>
+      <arg><option>--Configlet</option></arg>
+      <arg><option>--listen</option></arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1>
+    <title>LEÍRÁS</title>
+    <para>Ez a kézikönyvlap röviden dokumentálja a
+      <command>&dhpackage;</command> parancsot.</para>
+    <para>A <command>&dhpackage;</command> a ROXTerm terminál emulátor
+      beállításainak szerkesztésére szolgál.</para>
+  </refsect1>
+  <refsect1>
+    <title>KAPCSOLÓK</title>
+    <para>A program a szokásos &gnu; parancssori szintaxist követi:
+      hosszú kapcsolók két kötőjellel kezdődnek (`--').
+      A következő kapcsolók használhatóak.</para>
+    <variablelist>
+      <varlistentry>
+        <term><option>--appdir=KÖNYVTÁR</option>
+        </term>
+        <listitem>
+          <para>Az alkalmazás könyvtára ROX alkalmazásként futtatva.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--EditProfile=PROFIL</option>
+        </term>
+        <listitem>
+          <para>A megadott profil szerkesztése.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--EditColourScheme=SÉMA</option>
+        </term>
+        <listitem>
+          <para>A megadott színséma szerkesztése.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><option>--listen</option>
+        </term>
+        <listitem>
+          <para>Várakozás arra, hogy a ROXTerm D-BUS-on keresztül
+            műveleti kérelmeket küldjön.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+  <refsect1>
+    <title>LÁSD MÉG</title>
+    <para>A roxterm-config programot rendszerint a roxterm indítja el.
+      A csomag teljes dokumentációja a következő HTML-fájlban található:</para>
+    <para>
+      <filename>file://@CMAKE_INSTALL_FULL_DOCDIR@/en/index.html</filename>
+    </para>
+    <!-- para>vagy</para>
+    <para>
+      <filename>file://@CMAKE_INSTALL_FULL_DOCDIR@/hu/index.html</filename>
+    </para -->
+  </refsect1>
+  <refsect1>
+    <title>SZERZŐ</title>
+    <para>Ezt a kézikönyvlapot &dhusername; &dhemail; írta.
+	  A magyar fordítást &dhtranslator; készítette.
+      Engedélyezett a dokumentum másolása, terjesztése és/vagy módosítása
+      a Free Software Foundation által kiadott &gnu; General Public License
+      2. vagy bármely újabb verziójának feltételei szerint.
+    </para>
+    <para>
+      Debian alapú rendszereken a GNU General Public Licenc teljes szövege
+      megtalálható a /usr/share/common-licenses/GPL fájlban.
+    </para>
+  </refsect1>
+</refentry>
