@@ -981,7 +981,7 @@ o ‘xsltproc’ e o ‘docbook-xsl’ no campo do controle do Build-Depends.
   <para>
   Nos sistemas operacionais baseados no Debian, o texto completo 
   da Licença Pública Geral do GNU pode ser encontrado no diretório 
-  /usr/share/common-licenses/GPL.
+  /usr/share/common-licenses/GPL-2.
   </para>
   </refsect1>
 </refentry>

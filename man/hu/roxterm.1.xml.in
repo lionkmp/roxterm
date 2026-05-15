@@ -891,7 +891,7 @@ and docbook-xsl in your Build-Depends control field.
     </para>
     <para>
       Debian alapú rendszereken a GNU General Public Licenc teljes szövege
-      megtalálható a /usr/share/common-licenses/GPL fájlban.
+      megtalálható a /usr/share/common-licenses/GPL-2 fájlban.
     </para>
   </refsect1>
 

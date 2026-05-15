@@ -912,7 +912,7 @@ and docbook-xsl in your Build-Depends control field.
     </para>
   <para>
     On Debian systems, the complete text of the GNU General Public
-    License can be found in /usr/share/common-licenses/GPL.
+    License can be found in /usr/share/common-licenses/GPL-2.
   </para>
 
   </refsect1>
