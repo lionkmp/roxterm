@@ -1,0 +1,23 @@
+[roxterm shortcuts scheme]
+Fájl/Új ablak=<Shift><Control>n
+Fájl/Új lap=<Shift><Control>t
+Fájl/Ablak bezárása=<Shift><Control>q
+Fájl/Lap bezárása=<Shift><Control>w
+Lapok/Előző lap=<Control>Page_Up
+Lapok/Következő lap=<Control>Page_Down
+Szerkesztés/Összes kijelölése=<Shift><Control>a
+Szerkesztés/Másolás=<Shift><Control>c
+Szerkesztés/Beillesztés=<Shift><Control>v
+Nézet/Menü megjelenítése=<Shift><Control>m
+Nézet/Nagyítás=<Control>plus
+Nézet/Kicsinyítés=<Control>minus
+Nézet/Normál méret=<Control>0
+Nézet/Teljes képernyő=F11
+Nézet/Keret nélkül=<Shift><Control>b
+Nézet/Görgetés fel egy sorral=<Shift>Up
+Nézet/Görgetés le egy sorral=<Shift>Down
+Súgó/Kézikönyv megjelenítése=F1
+Szerkesztés/Másolás és beillesztés=<Shift><Control>y
+Keresés/Keresés...=<Shift><Control>f
+Keresés/Következő keresése=<Shift><Control>i
+Keresés/Előző keresése=<Shift><Control>p
